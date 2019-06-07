@@ -1,0 +1,30 @@
+.printThis {
+  display: none !important;
+}
+
+@media print {
+  .printThis {
+    display: block !important;
+  }
+
+  @page {size: landscape}
+
+  .table-striped {
+    font-family: Roboto;
+    font-size: 10px;
+  }
+  .table-striped > thead > tr:nth-child(2n+1) > th {
+    background-color: #1515bf !important;
+  }
+
+  .table-striped > tbody > tr:nth-child(2n+1) > td {
+    background-color: #e1e1e7 !important;
+  }
+
+  .table-header th {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    color: white !important;
+  }
+
+}
