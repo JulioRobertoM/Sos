@@ -1,0 +1,181 @@
+<div class="msgDataNot">
+    <div class="header" *ngIf="dataSource.data.length > 0" fxLayoutAlign="center center">
+      <b>Referencias</b>
+    </div>  
+</div>
+
+<table fxFlex mat-table [dataSource]="dataSource" *ngIf="dataSource.data.length > 0" matSort class="tableSMS" multiTemplateDataRows>
+
+  <ng-container matColumnDef="referencia">
+    <th mat-header-cell *matHeaderCellDef >Descripción referencia </th>
+    <td mat-cell *matCellDef="let element"> {{element.referencia.descr}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="tablaprecio">
+    <th mat-header-cell *matHeaderCellDef> Tabla de precios </th>
+    <td mat-cell *matCellDef="let element"> {{element.tablaprecio.nombre}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="cantidad">
+    <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+    <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="valor">
+    <th mat-header-cell *matHeaderCellDef> Valor </th>
+    <td mat-cell *matCellDef="let element"> {{element.valor | currency: '$'}} </td>
+  </ng-container>
+  <!-- *ngIf="rsoForm.estado === '1'" -->
+  <ng-container matColumnDef="accion" >
+    <th mat-header-cell *matHeaderCellDef> Acción </th>
+    <td mat-cell *matCellDef="let element" style="padding: 0px;">
+      <div fxLayout="row" class="actionButtonsTable">
+
+        <!--<button [disabled]="rsoForm.estado === 'C'" fxFlex fxLayout="row" (click)="setExpanded(element)" mat-raised-button>
+          <mat-icon height="25" width="25" style="color: #f31123; ">delete</mat-icon>
+          Borrar
+        </button>-->
+        
+        <div fxLayoutAlign="center center" fxFlex fxLayout="row" (click)="setExpanded(element)">
+          <img src="assets/imgs/delete.svg" height="30" width="40">
+        </div>
+      </div>
+
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length" style="margin: 0px; padding: 0px;">
+
+      <div fxLayout="row" class="discard" style="border-radius: 7px; border: none !important;">
+        <div fxFlex fxLayoutAlign="center center" class="messageConfirmation">
+          Desea borrar {{element.referencia.descr}}?
+        </div>
+        <div>
+          <div fxLayout="row" class="actionButtonsTableConfirmation">
+            <div fxLayoutAlign="center center" fxFlex fxLayout="row" (click)="delete(element.id)">
+              <img src="assets/imgs/done_mini.svg" height="30" width="30">
+            </div>
+
+            <div fxLayoutAlign="center center" fxFlex fxLayout="row" (click)="cancelDelete()">
+              <img src="assets/imgs/plus_mini.svg" height="30" width="30">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+  <tr mat-row id="data" *matRowDef="let row; columns: displayedColumns;"
+      [@banished]="row == expandedElement ? 'yes' : 'no'"></tr>
+
+  <tr mat-row id="deleteMsg" *matRowDef="let row; columns: ['expandedDetail'];
+          when: isExpansionDetailRow" [@detailExpand]="row == expandedElement ? 'expanded' : 'collapsed'"
+      style="overflow: hidden"></tr>
+</table>
+
+<div class="msgDataNot" *ngIf="dataSource.data.length === 0 && rsoForm.estado != 'C'"> 
+  <div class="header" fxLayoutAlign="center center">
+    <b>Referencias no cargadas </b>
+  </div>  
+</div>
+  
+<ng-container *ngIf="rsoForm.estado != 'C'">
+  <mat-divider style="margin: 20px 0px"></mat-divider>
+
+  <div class="msgDataNot" *ngIf="dataSource.data.length > 0">
+    <div class="header" fxLayoutAlign="center center">
+      <b>Adicionar productos</b>
+    </div>  
+  </div>
+
+  <div class="formSms" fxLayout="row" >
+    <form [formGroup]="form" fxFlex>
+
+      <div fxLayout="row" fxLayout.xs="column wrap" class="alternate-theme" fxLayoutGap.xs="0px" fxLayoutGap="30px">
+        <mat-form-field fxFlex fxFlex.gt-xs="30">
+          <mat-select placeholder="Tabla de precios" formControlName="tablaprecio" (valueChange)="setReferencia($event)" 
+          [compareWith]="compareFn" [ngModel]="originalObject">
+            <mat-option *ngFor="let tablaprecio of tablapreRecords" [value]="tablaprecio">
+              {{ tablaprecio.nombre }}
+            </mat-option>
+          </mat-select>  
+        </mat-form-field>
+        <!--<div fxLayout="row" fxLayoutGap="15px">
+          <div fxLayoutAlign="start start">
+            <button mat-raised-button (click)="openTopicDialog(null)" color="primary">
+              <mat-icon>add</mat-icon>
+              <span>Precios</span>
+            </button>
+          </div>
+        </div>-->
+
+        <mat-form-field fxFlex fxFlex.gt-md="40">
+          <mat-select placeholder="Referencias" formControlName="precio" (valueChange)="setPrecio($event)">
+            <mat-option *ngFor="let precio of preciosRecords" [value]="precio">
+              {{ precio.producto.descr }}
+            </mat-option>
+          </mat-select>  
+        </mat-form-field>
+
+        <!--<mat-form-field fxFlex fxFlex.gt-sm="100%">
+          <mat-label>Seleccione referencia</mat-label>
+          <input matInput placeholder="Referencias" [matAutocomplete]="autoR" formControlName='precio'
+          (onSelectionChange)="setPrecio($event)" >
+
+          <mat-autocomplete #autoR="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let lista of preciosRecords" [value]="lista">
+              <span>{{ lista.producto.descr }}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>-->
+
+        <!--*****-->
+        <!--<div fxLayout="row" fxLayoutGap="15px">
+          <div fxLayoutAlign="start start">
+            <button mat-raised-button (click)="openReferDialog(null)" color="primary">
+              <mat-icon>add</mat-icon>
+              <span>Referencias</span>
+            </button>
+          </div>
+        </div>-->
+      </div>
+
+      <div fxLayout="row" fxLayout.xs="column wrap" class="alternate-theme" fxLayoutGap.xs="0px" fxLayoutGap="30px">   
+          
+        <mat-form-field fxFlex fxFlex.gt-xs="15" 
+          class="demo-full-width">
+          <mat-label>Cantidad</mat-label>
+          <input matInput placeholder="Cantidad" formControlName="cantidad" type="number" required>
+        </mat-form-field>
+
+        <mat-form-field fxFlex fxFlex.gt-xs="15" 
+          class="demo-full-width">
+          <mat-label>Valor</mat-label>
+          <input matInput placeholder="Valor venta" formControlName="valor" type="number" required disabled="false">
+        </mat-form-field>
+
+        <mat-form-field fxFlex fxFlex.gt-xs="50" 
+          class="demo-full-width">
+          <mat-label>Comentario</mat-label>
+          <input matInput placeholder="Comentario de la referencia" formControlName="comencpo" autocomplete="off">
+        </mat-form-field>
+        <!--<mat-icon matSuffix (click)="save()" style="font-size: 40px; color: #5552eb; cursor:pointer;">add_circle_outline</mat-icon> -->
+
+        <button (click)="save()" *ngIf="rsoForm.estado != 'C'" mat-raised-button color="primary">
+          <mat-icon>add_circle_outline</mat-icon>
+          Agregar
+        </button>
+      </div>
+    </form>
+
+  </div>
+</ng-container>
+<div class="msgDataNot" *ngIf="dataSource.data.length === 0 && rsoForm.estado === 'C'"> 
+  <div class="header" fxLayoutAlign="center center">
+    <b>Pedido cerrado sin Referencias </b>
+  </div>  
+</div>

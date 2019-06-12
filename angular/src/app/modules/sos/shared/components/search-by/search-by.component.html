@@ -1,0 +1,14 @@
+<div fxLayout="row" fxLayoutGap="10px" fxFlex>
+  <mat-form-field style="width:150px;">
+    <mat-select placeholder="Buscar por" [(ngModel)]="filterBy" (selectionChange)="changeFilterBy($event)">
+      <mat-option *ngFor="let column of filterColumns" 
+                  [value]="column">
+        {{ column.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field fxFlex="30" class="example-full-width" floatLabel="never" >
+    <input matInput matAutosize="true" (keyup)="applyFilter($event.target.value)"
+            placeholder="Digite aquí">
+  </mat-form-field>
+</div>

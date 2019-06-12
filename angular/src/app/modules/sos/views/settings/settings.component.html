@@ -1,0 +1,66 @@
+<div class="alternate-theme">
+  <mat-toolbar class="example-header" color="primary">
+    <button mat-icon-button (click)="toggleForceOpen()" *ngIf="isMobileView">
+      <mat-icon style="padding-left: 8px; padding-right: 10px;" aria-label="menu">menu</mat-icon>
+    </button>
+    <div fxLayout="row" style="height:20px;">
+      <div fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-icon style="font-size: 28px; padding-right: 10px;">settings</mat-icon>
+          <div style="font-size: 22px; padding-top: 3px;">Configuraciones</div>
+        </div>
+      </div>
+    </div>
+    <span fxFlex></span>
+  </mat-toolbar>
+</div>
+
+<mat-sidenav-container class="example-container">
+
+    <!-- [mode]="isMobileView ? 'over' : 'side'" -->
+  <mat-sidenav class="example-sidenav"
+               [mode]="isMobileView ? 'over' : 'side'"
+               [opened]="!isMobileView || openSidenav" [disableClose]="!isMobileView"
+               [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
+               [fixedBottomGap]="options.value.bottom"
+               (closedStart)="closedStart()"
+               fxLayout="column">
+    
+    <mat-nav-list fxFlex style="width: 100%;">
+
+      <ng-container>
+        <a style="cursor: pointer" mat-list-item routerLink="./generals"
+          [ngClass]="{'menuItemSelected': currentURL === ('/sos/settings/generals' || '/sos/settings')}">
+          <mat-icon (click)="toggleForceOpen()">assignment</mat-icon>
+          <label fxFlex (click)="toggleForceOpen()">Generales</label>
+          <mat-icon (click)="toggleForceOpen()" *ngIf="currentURL === '/sos/settings/generals'">chevron_right</mat-icon>
+        </a>
+        <a style="cursor: pointer" mat-list-item routerLink="./users"
+          [ngClass]="{'menuItemSelected': currentURL === ('/sos/settings/users' || '/sos/settings')}">
+          <mat-icon (click)="toggleForceOpen()">person</mat-icon>
+          <label fxFlex (click)="toggleForceOpen()">Usuarios</label>
+          <mat-icon (click)="toggleForceOpen()" *ngIf="currentURL === '/sos/settings/users'">chevron_right</mat-icon>
+        </a>
+        <a style="cursor: pointer" mat-list-item routerLink="./roles"
+          [ngClass]="{'menuItemSelected': currentURL === ('/sos/settings/roles' || '/sos/settings')}">
+          <mat-icon (click)="toggleForceOpen()">group_add</mat-icon>
+          <label fxFlex (click)="toggleForceOpen()">Rol de usuarios</label>
+          <mat-icon (click)="toggleForceOpen()" *ngIf="currentURL === '/sos/settings/roles'">chevron_right</mat-icon>
+        </a>
+        <a style="cursor: pointer" mat-list-item routerLink="/sos"
+          [ngClass]="{'menuItemSelected': currentURL === ('/sos' || '/sos')}">
+          <mat-icon (click)="toggleForceOpen()">chevron_left</mat-icon>
+          <label fxFlex (click)="toggleForceOpen()">Retroceder</label>
+        </a>
+        <mat-divider></mat-divider>
+      </ng-container>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content [formGroup]="options">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

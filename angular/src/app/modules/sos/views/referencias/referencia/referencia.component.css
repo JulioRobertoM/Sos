@@ -1,0 +1,26 @@
+table {
+  width: 100%;
+  text-align: left;
+}
+
+mat-card {    
+  margin: 10px;
+}
+
+.example-container{
+  position: absolute;
+  top: 130px;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+}
+
+.demo-full-width {
+  margin-bottom: 15px;
+}
+
+.textareachat {
+	width: 99%;
+	height: 150px;
+  padding: 5px; 
+}

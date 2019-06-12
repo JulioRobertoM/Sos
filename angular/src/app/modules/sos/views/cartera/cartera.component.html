@@ -1,0 +1,216 @@
+<div fxLayout="column">
+    <div fxFlex="2"></div>
+    <div fxLayout="row" style="height:35px;">
+        <mat-icon style="font-size: 28px; padding-right: 10px;margin-left: 10px;">card_travel</mat-icon>
+        <div class="header">
+            <b style="font-size:22px;">Cartera</b>
+        </div>
+        <div fxFlex></div>
+    </div>
+
+    <mat-divider></mat-divider>
+   
+    <div fxLayoutAlign="start start" fxLayoutGap="10px" style="margin-left: 10px;margin-top: 0px;">
+        <button mat-mini-fab (click)="goBack()" color="primary">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <button (click)="consultar()" mat-raised-button color="primary">
+            <mat-icon>save</mat-icon>
+            Consultar
+        </button>
+        <button (click)="cambiar()" mat-raised-button color="warn">
+            <mat-icon>cached</mat-icon>
+            Nueva
+        </button>
+    </div>
+    <div fxFlex></div>
+    <div fxLayout="column" *ngIf="!isConsulta" style="margin-left: 10px;margin-right: 10px;">
+        <app-search-by [filterColumns]="filterColumns" [dataSource]="dataClientes">
+        </app-search-by>
+        <table fxFlex mat-table [dataSource]="dataClientes" matSort class="tableSMS" multiTemplateDataRows>
+            
+            <ng-container matColumnDef="codcli">
+                <th mat-header-cell *matHeaderCellDef style="width: 25%">Código/Nit </th>
+                <td mat-cell *matCellDef="let cliente" style="text-align: left;"> {{cliente.codcli}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="nombrecli">
+                <th mat-header-cell *matHeaderCellDef style="width: 75%">Nombre Cliente </th>
+                <td mat-cell *matCellDef="let cliente"> {{cliente.nombrecli}} </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedCliente"></tr>
+            <tr mat-row (click)="setCliente(row)"
+                *matRowDef="let row; columns: displayedCliente;"></tr>
+
+        </table>
+    </div>
+    <!--
+    <form class="formSms" fxLayout="row" id="contact-form" [formGroup]="form"
+        onkeypress="return event.keyCode != 13;">
+    
+        <div class="example-container" style="margin-left: 20px; margin-top: 20px;">
+            <div fxLayout="row" fxLayoutGap="90px" fxFlex="300" style="width: 400px" >
+                <mat-form-field fxFlex fxFlex.gt-md="100">
+                <mat-select placeholder="Cliente" formControlName="cliente" (valueChange)="setCliente($event)" >
+                    <mat-option *ngFor="let cliente of clientesRecords" [value]="cliente" >
+                        {{ cliente.codcli }} | {{ cliente.nombrecli }}
+                    </mat-option>
+                </mat-select>   
+                </mat-form-field>
+                <div fxHide fxFlex="5" fxShow.gt-md></div>
+            </div>
+        </div>
+    </form>-->
+    <mat-paginator [hidePageSize]="hidePageSize" [pageSize]="pagenumber" showFirstLastButtons 
+        [length]="totalSize">
+    </mat-paginator>
+    <div fxHide fxFlex="2" fxShow.gt-md></div>
+</div>
+
+<ng-container >
+    <mat-divider style="margin-bottom: 10px"></mat-divider>
+  
+    <div fxLayout="column" *ngIf="isConsulta" style="margin-left: 10px;margin-right: 10px;">
+        <div fxLayout="row" fxLayoutAlign="left">
+            <div class="header" fxLayoutAlign="left" style="padding-right: 80px;">
+                <b style="font-size:20px;">Detalle</b>
+            </div>  
+            <div fxHide fxFlex="45" fxShow.gt-md></div>
+            <button mat-raised-button color="warn" style="background-color: #5552eb;" (click)="printThis()">
+                <mat-icon>printer</mat-icon>
+                Imprimir
+            </button>
+        </div>
+
+        <app-search-by [filterColumns]="filterColumns" [dataSource]="dataSource">
+        </app-search-by>
+
+        <table class="tableClientes" *ngIf="isMobileView">
+            <thead>
+                <tr>
+                    <th>Nit</th>
+                    <th>Nombre Cliente</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{nitcliente}}</td>
+                    <td>{{nomcliente}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="tableClientes" *ngIf="!isMobileView">
+            <thead>
+                <tr>
+                    <th>Nit</th>
+                    <th>Nombre Cliente</th>
+                    <th>Dirección</th>
+                    <th>Teléfono</th>
+                    <th>Correo Electrónico</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{nitcliente}}</td>
+                    <td>{{nomcliente}}</td>
+                    <td>{{dircliente}}</td>
+                    <td>{{telcliente}}</td>
+                    <td>{{emacliente}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table fxFlex mat-table [dataSource]="dataSource" matSort class="tableSMS" multiTemplateDataRows>
+
+            <ng-container matColumnDef="nombretd">
+                <th mat-header-cell *matHeaderCellDef >Descripción </th>
+                <td mat-cell *matCellDef="let cartera"> {{cartera.nombretd}} </td>
+                <td mat-footer-cell *matFooterCellDef> Total Cartera </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="codigotd">
+                <th mat-header-cell *matHeaderCellDef> Tipo </th>
+                <td mat-cell *matCellDef="let cartera"> {{cartera.codigotd}} </td>
+                <td mat-footer-cell *matFooterCellDef>  </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="prefijocar">
+                <th mat-header-cell *matHeaderCellDef> Prefijo </th>
+                <td mat-cell *matCellDef="let cartera"> {{cartera.prefijocar}} </td>
+                <td mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="docucar">
+                <th mat-header-cell *matHeaderCellDef> Documento </th>
+                <td mat-cell *matCellDef="let cartera"> {{cartera.docucar}} </td>
+                <td mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="fechacar">
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let cartera"> {{cartera.fechacar}} </td>
+                <td mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="mora">
+                <th mat-header-cell *matHeaderCellDef style="text-align: right;"> Días de mora </th>
+                <td mat-cell *matCellDef="let cartera" style="text-align: right;"> {{cartera.mora}} </td>
+                <td mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="vrfaccar">
+                <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Valor </th>
+                <td mat-cell *matCellDef="let cartera" style="text-align: right;"> {{cartera.vrfaccar | currency: '$'}} </td>
+                <td mat-footer-cell *matFooterCellDef style="text-align: right;"> {{getTotalCost() | currency}} </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+
+        </table>
+    </div>
+    <div fxLayout="column" *ngIf="!isDatos">
+        <div class="extraTitleForm" style="margin-top: 10px;margin-left: 10px;">
+            <div class="header" >
+                <b style="font-size:15px;">No existen datos de cartera.</b>
+            </div>  
+        </div>
+    </div>    
+    <!--IMPRESION-->
+    <div style="margin-top: 15px;" id="listPedidos" class="printThis">
+            
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="table-header">
+                    <th>Descripción</th>
+                    <th>Nit</th>
+                    <th>Nombre Cliente</th>
+                    <th>Tipo</th>
+                    <th>Prefijo</th>
+                    <th>Documento</th>
+                    <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let cartera of dataSource.data">
+                        <tr>
+                        <td>{{cartera.nombretd}}</td>
+                        <td>{{cartera.numnitcar}}-{{cartera.digitocli}}</td>
+                        <td>{{cartera.nombrecli}}</td>
+                        <td>{{cartera.codigotd}}</td>
+                        <td>{{cartera.prefijocar}}</td>
+                        <td>{{cartera.docucar}}</td>
+                        <td>{{cartera.vrfaccar | currency: '$'}}</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+  
+</ng-container>

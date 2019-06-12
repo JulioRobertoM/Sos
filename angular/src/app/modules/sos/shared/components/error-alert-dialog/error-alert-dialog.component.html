@@ -1,0 +1,29 @@
+<h2 mat-dialog-title><b>ERROR</b></h2>
+<h3 mat-dialog-title style="margin-bottom: 0px; font-size: 15px;">{{dataErr.status + " " + dataErr.statusText}}</h3>
+<mat-dialog-content fxLayout="column">
+
+  <div class="container">
+
+    <div *ngIf="errMsg.type === 'Default'">
+      A server exception has ocurred, please contact your administrator.
+    </div>
+
+    <div *ngIf="errMsg.type === 'SequelizeForeignKeyConstraintError'">
+      This {{ errMsg.entity }} is currently being used by <b>{{ foreignDependency ? foreignDependency : "ARCS" }}</b> and can not be deleted. 
+    </div>
+
+  </div>
+
+  <details>
+    <summary>Details</summary>
+    <ul>
+      <li>{{dataErr.error.name}}</li>
+      <li>{{dataErr.error.message}}</li>
+    </ul>
+  </details>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div fxFlex></div>
+  <button mat-button [mat-dialog-close]="">OK</button>
+</mat-dialog-actions>

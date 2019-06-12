@@ -1,0 +1,79 @@
+<!--<div fxLayout="row"
+     fxLayout.lt-lg="column" style="padding-bottom: 8%; margin-top: 8%;"
+     fxLayoutAlign="center center">
+
+  <div fxLayout="column" fxLayoutAlign="center center" style="background-size: cover;
+  max-width: 100%; height:auto;">
+  <!--<picture>
+    <source srcset="assets/imgs/fondoppal.png" media="(min-width:800px)">
+    <source srcset="assets/imgs/fondocelular.png" media="(min-width:300px)">
+    <img src="assets/imgs/fondoppal.png" >
+  </picture>
+    <img src="assets/imgs/fondoppal.png" alt="" border="0" title="SOS Technology SAS" align="right"
+    srcset="assets/imgs/fondoppal.png 1100w"/>
+ </div>
+</div>-->
+<!--
+<div class="container">
+  <div class="col-sm-4 text-center">
+    <b class="text-center">Pedidos generados</b>
+    <canvas style="max-width: 100%; max-height: 100%" baseChart
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"
+          [legend]="pieChartLegend"
+          [options]="pieChartOptions"
+          (chartHover)="chartHovered1($event)"
+          (chartClick)="chartClicked1($event)"></canvas>
+      </div>
+</div>-->
+
+  <div fxLayout="column" style="padding-top: 0px;">
+
+    <div fxFlex="1"></div>
+
+    <div class="cardContainerSms" fxLayout="column" fxFlex="100%">
+      <div class="bgindex">
+        <div class="cardHeader" fxLayout="row">
+
+          <div class="itemTabTime" (click)="setChartTimeTab('w')"
+                [ngClass]="{'selectTabCardItem' : (timeChart === 'w')}">
+            Semanal
+          </div>
+          <div class="itemTabTime noneBorder" (click)="setChartTimeTab('m')"
+                [ngClass]="{'selectTabCardItem' : (timeChart === 'm')}">
+            Mes
+          </div>
+        </div>
+
+        <button mat-fab color="warn" class="btn-add-fixed" routerLink="ayuda">
+          Ayuda
+        </button>
+        <div class="cardContainer" fxLayout="row">
+          <div flexLayout="row" fxFlex>
+            <app-home-chart #chartComponent [markChart]="markChart" [timeChart]="timeChart"></app-home-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="1"></div>
+
+  <!--<div class="cardContainerSms" style="margin-top: 30px" fxLayout="column" fxFlex="100%">
+
+    <div class="cardHeader" fxLayout="row">
+      <div class="itemTab" [ngClass]="{'selectTabCardItem' : (tagSelectedHistory === 1)}" (click)="setHistoryTab(1)">
+        Historial de pedidos
+      </div>
+      <div fxFlex></div>
+      <div class="itemTabIcon">
+        <button (click)="goTo()" class="bottomNoneStyle" [matTooltip]="'Revisar todos los pedidos'">
+          <img src="assets/imgs/fileboard_checklist.png" height="30" width="auto"/>
+        </button>
+      </div>
+    </div>
+
+    <div class="cardContainer" fxLayout="row">
+    </div>
+  </div>-->
+</div>
+    

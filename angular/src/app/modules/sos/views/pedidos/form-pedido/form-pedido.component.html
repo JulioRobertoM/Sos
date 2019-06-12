@@ -1,0 +1,14 @@
+<!--/// users pendings -->
+<div fxLayout="column">
+
+  <div class="cardContainerSms" style="margin-top: 0px" fxLayout="column" fxFlex="100%">
+    <!--*ngIf="rsoForm"-->
+    <div class="cardContainer" fxLayout="column" *ngIf="rsoForm">
+
+      <app-pedido (changeRSO)="setNewRso($event)" [rsoForm]="rsoForm" ></app-pedido>
+
+    </div>
+
+  </div>
+
+</div>

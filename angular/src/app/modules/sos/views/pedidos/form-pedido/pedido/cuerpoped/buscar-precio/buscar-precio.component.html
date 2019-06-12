@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Buscar tabla de precios</h2>
+<mat-dialog-content style="margin-left: 0px; margin-right: 0px;">
+
+  <mat-dialog-actions>
+    <app-search-by [filterColumns]="filterColumns"
+        [dataSource]="dataRefer">
+    </app-search-by>
+  </mat-dialog-actions>
+  <div fxLayout="column">
+    <div fxFlex="5"></div>
+    <div fxFlex style="margin-top: 1px;">
+      <table mat-table matSort class="tableSMS" fxFlex [dataSource]="dataRefer">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="codigo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Código</th>
+          <td mat-cell *matCellDef="let tablap"> {{tablap.codigo}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+          <td mat-cell *matCellDef="let tablap"> {{tablap.nombre}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row (click)="selitem(row)"
+            [ngClass]="{ 'selected-row' : tablap?.id == row.id }"
+            *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+      </table>
+    </div>
+    <div fxFlex="5"></div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div fxFlex></div>
+  <button mat-button (click)="close()">Cerrar</button>
+</mat-dialog-actions>

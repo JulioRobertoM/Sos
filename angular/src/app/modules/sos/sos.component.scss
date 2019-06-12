@@ -1,0 +1,47 @@
+.example-container {
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  background: #D3D3D3; //Color menu izq
+}
+
+.example-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(232, 236, 240); //Color de fondo barra Web
+  background: linear-gradient(to right, rgb(232, 229, 235), rgb(150, 149, 149));
+}
+
+mat-toolbar {
+  height: 50px;
+}
+
+mat-icon {
+  padding-right: 10px;
+}
+
+mat-nav-list {
+  padding-top: 0px;
+}
+
+.not-active-link {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: black;
+}
+
+.app_sidenav{
+  width: 280px;
+}

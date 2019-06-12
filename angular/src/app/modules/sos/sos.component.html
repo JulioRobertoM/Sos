@@ -1,0 +1,168 @@
+
+<mat-toolbar class="example-header" color="primary" style="padding-left: 0px;">
+  <button mat-icon-button (click)="toggleForceOpen()" style="padding-left: 10px; margin-right: 20px;" *ngIf="isMobileView">
+    <mat-icon style="padding-left: 10px;" aria-label="menu">menu</mat-icon>
+  </button>
+  <div *ngIf="isDevelopment"
+        style="padding: 16px; 
+          background-color: rgb(232, 236, 240); 
+          background: linear-gradient(to right, rgb(232, 229, 235), rgb(150, 149, 149));
+          margin-right: 30px;
+          width: 250px;" fxLayoutAlign="center center">
+    Menu de opciones
+  </div>
+  <span fxFlex fxHide fxShow.gt-sm></span>
+  <div fxLayout="row" style="padding: 10px;">
+    <div fxFlex></div>
+    <div fxLayout="column">
+      <div fxFlex fxLayoutAlign="center center">
+        <img src="assets/imgs/dismovel.gif" style="width: 170px; height: 40px; padding-top: 1px; padding-right:10px;" >
+        <!--<div>Generación de Pedidos</div>-->
+      </div>
+    </div>
+  </div>
+  <span fxFlex></span>
+  <button class="hvr-pulse-shrink" mat-mini-fab color="primary" (click)="sidenavRight.toggle()">
+    <img src="assets/imgs/avatar.png" class="user_main"
+          style="width:40px; height:40px; margin-top:-8px;">
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav class="example-sidenav"
+                [mode]="isMobileView ? 'over' : 'side'"
+                [opened]="!isMobileView || openSidenav" [disableClose]="!isMobileView"
+                [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
+                [fixedBottomGap]="options.value.bottom"
+                (closedStart)="closedStart()"
+                fxLayout="column">
+
+    <mat-nav-list fxFlex style="width: 100%;cursor:pointer;" fxLayout="column">
+      <a mat-list-item routerLink="" 
+        [ngClass]="{'menuItemSelected': currentURL === '/sos'}">
+        <mat-icon (click)="toggleForceOpen()">home</mat-icon>
+        <label (click)="toggleForceOpen()">Home</label>
+        <span fxFlex></span>
+        <mat-icon (click)="toggleForceOpen()" *ngIf="currentURL === '/sos'">chevron_right</mat-icon>
+      </a>
+      <div *ngIf="menu001">
+        <a mat-list-item routerLink="pedidos"
+          [ngClass]="{'menuItemSelected': currentURL.includes('/sos/pedidos')}">
+          <mat-icon (click)="toggleForceOpen()">shopping_cart</mat-icon>
+          <label (click)="toggleForceOpen()">Pedidos</label>
+          <span fxFlex></span>
+          <mat-icon (click)="toggleForceOpen()" *ngIf="currentURL === '/sos/pedidos'">chevron_right</mat-icon>
+        </a>
+      </div>
+      <div *ngIf="menu002">
+        <a mat-list-item routerLink="cartera"
+          [ngClass]="{'menuItemSelected': currentURL.includes('/sos/cartera')}">
+          <mat-icon (click)="toggleForceOpen()">card_travel</mat-icon>
+          <label (click)="toggleForceOpen()">Cartera</label>
+          <span fxFlex></span>
+          <mat-icon (click)="toggleForceOpen()" *ngIf="currentURL === '/sos/cartera'">chevron_right</mat-icon>
+        </a>
+      </div>
+      <div *ngIf="menu003">
+        <a mat-list-item routerLink="auxcartera"
+          [ngClass]="{'menuItemSelected': currentURL.includes('/sos/auxcartera')}">
+          <mat-icon (click)="toggleForceOpen()">monetization_on</mat-icon>
+          <label (click)="toggleForceOpen()">Auxiliar de Cartera</label>
+          <span fxFlex></span>
+          <mat-icon (click)="toggleForceOpen()" *ngIf="currentURL === '/sos/auxcartera'">chevron_right</mat-icon>
+        </a>
+      </div>
+      <div *ngIf="menu004">
+        <a mat-list-item routerLink="referencias"
+          [ngClass]="{'menuItemSelected': currentURL.includes('/sos/referencias')}">
+          <mat-icon (click)="toggleForceOpen()">storage</mat-icon>
+          <label (click)="toggleForceOpen()">Referencias</label>
+          <span fxFlex></span>
+          <mat-icon (click)="toggleForceOpen()" *ngIf="currentURL === '/sos/referencias'">chevron_right</mat-icon>
+        </a>
+      </div>
+      <div *ngIf="menu005">
+        <a mat-list-item routerLink="kardex"
+          [ngClass]="{'menuItemSelected': currentURL.includes('/sos/kardex')}">
+          <mat-icon (click)="toggleForceOpen()">style</mat-icon>
+          <label (click)="toggleForceOpen()">Existencias</label>
+          <span fxFlex></span>
+          <mat-icon (click)="toggleForceOpen()" *ngIf="currentURL === '/sos/kardex'">chevron_right</mat-icon>
+        </a>
+      </div>
+      <div fxFlex></div>
+      <div fxFlex></div>
+      <div fxFlex></div>
+      <div *ngIf="menu006">
+        <a mat-list-item routerLink="settings"
+          [ngClass]="{'menuItemSelected': currentURL.includes('/sos/settings')}">
+          <mat-icon (click)="toggleForceOpen()">settings</mat-icon>
+          <label (click)="toggleForceOpen()">Configuración</label>
+          <span fxFlex></span>
+          <mat-icon (click)="toggleForceOpen()" *ngIf="currentURL === '/sos/settings'">chevron_right</mat-icon>
+        </a>
+      </div>
+      <!--<a mat-list-item routerLink="users"
+        [ngClass]="{'menuItemSelected': currentURL.includes('/sos/users')}">
+        <mat-icon (click)="toggleForceOpen()">person</mat-icon>
+        <label (click)="toggleForceOpen()">Usuarios</label>
+        <span fxFlex></span>
+        <mat-icon (click)="toggleForceOpen()" *ngIf="currentURL === '/sos/users'">chevron_right</mat-icon>
+      </a>-->
+    </mat-nav-list>
+    
+  </mat-sidenav>
+
+  <mat-sidenav #sidenavRight mode="over" [(opened)]="openedRight" position="end" 
+                fixedInViewport class="example-sidenav" style="background-color: rgb(222, 222, 222);" fxLayout="column">
+    <div fxLayout="column">
+      <div fxLayoutAlign="center center">
+        <b style="font-size: 20px; margin-bottom: 45px;">{{ user?.rol.nombrerol }}</b>
+      </div>
+      <img src="assets/imgs/avatar.png" class="user_main"
+            style="width:150px; height:150px; margin:auto; padding-bottom: 25px;">
+      <div fxLayoutAlign="center center">
+        <b style="font-size: 15px;">{{ user?.nombre + " " + user?.apellido }}</b>
+      </div>
+      <div fxLayoutAlign="center center">
+        <div style="font-size: 18px; padding-bottom: 15px;">{{ user?.cargo }}</div>
+      </div>
+      <div fxLayoutAlign="center center" style="padding-bottom: 25px;">
+        {{ user?.login }}
+      </div>
+      <button mat-raised-button style="margin-top: 15px; margin-bottom: 50px"
+              (click)="changePassword()" [disabled]="!user?.id" color="primary">
+        <mat-icon>autorenew</mat-icon>
+        <span>Cambio contraseña</span>
+      </button>
+      <button mat-raised-button (click)="signOut()" color="warn">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Salir</span>
+      </button>  
+    </div>
+    <div fxFlex="20"></div>
+  </mat-sidenav>    
+
+  <mat-sidenav-content [formGroup]="options">
+    <ng-progress [thick]="true" [spinner]="false"
+                  [color]="'#c5cae9'" 
+                  (started)="globalService.startLoading()"
+                  (completed)="globalService.stopLoading()">
+    </ng-progress>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+  <!-- <mat-sidenav-content 
+    [formGroup]="options" infiniteScroll 
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="1000"
+    (scrolled)="onScroll()">
+    <ng-progress [thick]="true" [spinner]="false"
+                  [color]="'#c5cae9'" 
+                  (started)="globalService.startLoading()"
+                  (completed)="globalService.stopLoading()">
+    </ng-progress>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+-->
+</mat-sidenav-container>

@@ -1,0 +1,53 @@
+.dashboard-card {
+  margin: 15px;
+  padding: 50px;
+  min-width: 250px;
+}
+
+.dashboard-card > mat-card-content {
+  height: 125px;
+}
+
+.header {
+  padding-top: 10px;
+  font-size: 40px; 
+  /* color: #9b9b9b; */
+}
+
+mat-icon {
+  font-size: 55px;
+  color: #5a78a7;
+}
+
+/*img {
+  background: url(../../../../../assets/imgs/fondoppal.png) no-repeat fixed center center #333;
+  background-size: cover;
+  max-width: 100%;
+  margin-bottom:5px;
+}*/
+
+.header {
+  color: gray;
+}
+
+/* .grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+} */

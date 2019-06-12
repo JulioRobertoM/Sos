@@ -1,0 +1,105 @@
+<quill-editor fxFlex id="quill-editor-size" [(ngModel)]="mdNgModel" 
+              (ngModelChange)="emitChange()" (keyup)="triggerOnKeyUp()">
+  <div quill-editor-toolbar>
+    <span class="ql-formats">
+      <button class="ql-bold" [title]="'Bold'"></button>
+      <button class="ql-italic" [title]="'Italic'"></button>
+      <button class="ql-underline" [title]="'Underline'"></button>
+      <button class="ql-strike" [title]="'Strike'"></button>
+    </span>
+    <!-- <span class="ql-formats">
+      <button class="ql-blockquote" [title]="'Blockquote'"></button>
+      <button class="ql-code-block" [title]="'Code-block'"></button>
+    </span> -->
+    <span class="ql-formats">
+      <button class="ql-list" [title]="'List'" value="ordered"></button>
+      <button class="ql-list" [title]="'List'" value="bullet"></button>
+    </span>
+    <!-- <span class="ql-formats">
+      <button class="ql-script" [title]="'Script'" value="sub"></button>
+      <button class="ql-script" [title]="'Script'" value="super"></button>
+    </span> -->
+    <!-- <span class="ql-formats">
+      <button class="ql-indent" [title]="'Indent'" value="-1"></button>
+      <button class="ql-indent" [title]="'Indent'" value="+1"></button>
+    </span> -->
+    <!-- <span class="ql-formats">
+      <button class="ql-direction" [title]="'Direction'" value="rtl"></button>
+    </span> -->
+    <span class="ql-formats">
+      <select class="ql-color" [title]="'Color'">
+        <option selected value="black"></option>
+        <option value="red"></option>
+        <option value="blue"></option>
+        <option value="green"></option>
+        <option value="yellow"></option>
+        <option value="burlywood"></option>
+        <option value="mediumpurple"></option>
+        <option value="darkgray"></option>
+        <option value="darkred"></option>
+        <option value="darkblue"></option>
+        <option value="darkgreen"></option>
+        <option value="orange"></option>
+        <option value="brown"></option>
+        <option value="purple"></option>
+      </select>
+    </span>
+    <span class="ql-formats">
+      <select class="ql-background" [title]="'Background'">
+        <option selected value="black"></option>
+        <option value="red"></option>
+        <option value="blue"></option>
+        <option value="green"></option>
+        <option value="yellow"></option>
+        <option value="burlywood"></option>
+        <option value="mediumpurple"></option>
+        <option value="darkgray"></option>
+        <option value="darkred"></option>
+        <option value="darkblue"></option>
+        <option value="darkgreen"></option>
+        <option value="orange"></option>
+        <option value="brown"></option>
+        <option value="purple"></option>
+      </select>
+    </span>                
+    <span class="ql-formats">
+      <select class="ql-size" [title]="'Size'">
+        <option value="small">Pequeño</option>
+        <option selected>Normal</option>
+        <option value="large">Grande</option>
+        <option value="huge">Enorme</option>
+      </select>
+    </span>
+    <span class="ql-formats">
+      <select class="ql-align" [title]="'Alignment'">
+        <option selected></option>
+        <option value="center"></option>
+        <option value="right"></option>
+        <option value="justify"></option>
+      </select>
+    </span>
+    <span class="ql-formats">
+      <select class="ql-font" [title]="'Font'">
+        <option selected></option>
+        <option value="serif"></option>
+        <option value="monospace"></option>
+      </select>
+      <!-- <span *ngFor="let customControl of customControls">
+        <button class="ql-omega"
+                (click)="customControl.onClick($event)">
+        </button>
+      </span> -->
+    </span>                
+    <!-- <span class="ql-formats">
+      <button class="ql-image"></button>
+    </span> -->
+    <span class="ql-formats" *ngFor="let customBtn of customBtns">
+      <button style="padding:0px;"
+              [title]="customBtn.title"
+              (click)="customBtn.onClick(customBtnsData)"
+              type="button">
+        <mat-icon>{{customBtn.icon}}</mat-icon>
+      </button>
+    </span>
+  </div>
+</quill-editor>

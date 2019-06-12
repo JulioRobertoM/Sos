@@ -1,0 +1,58 @@
+<div class="page-login-body" fxLayoutAlign="center">
+  <mat-card class="z-depth-5 login-box" fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="center center">
+
+    <div fxLayout="column" fxLayoutAlign="center center" style="margin-bottom:5px;">
+      <img src="assets/imgs/dismovel.gif" style="width: 170px; height: 40px; padding-top: 1px; padding-right:10px;" >
+      <!--<mat-icon style="font-size:50px; height: 60px; padding-right: 30px;">shopping_cart</mat-icon>-->
+      <br>
+      <div style="font-size:22px; font-weight:600;">Generación de Pedidos</div>
+      <!--<img src="assets/imgs/fondocelular.png" alt="" width="200" height="80" border="0" title="SOS Technology SAS" align="right"/>-->
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="sendInformation()">
+    
+      <div fxLayout="column" fxLayoutGap="10px">
+        <mat-form-field class="inputmat" fxFlex="100%">
+          <input matInput placeholder="Usuario"
+                 formControlName="username"
+                 dividerColor="warn"
+                 [disabled]="isDisabled">
+          <mat-error *ngIf="usernameFormControl.hasError('required')">
+            <strong>Campo requerido</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="inputmat" fxFlex="100%">
+          <input matInput placeholder="Contraseña" type="password"
+                 formControlName="password"
+                 [errorStateMatcher]="matcher"
+                 [disabled]="isDisabled">
+          <mat-error *ngIf="passwordFormControl.hasError('required')">
+            <strong>Campo requerido</strong>
+          </mat-error>
+          <mat-error *ngIf="loginFailed">
+            <strong>Contraseña incorrecta</strong>
+          </mat-error>        
+        </mat-form-field>
+  <!--
+        <re-captcha (resolved)="resolved($event)" siteKey={{key}}></re-captcha>
+  -->
+        <button mat-raised-button color="primary"
+                fxLayout="row" fxLayoutAlign="center" 
+                style="height: 50px;"
+                type="submit"
+                [disabled]="isDisabled">
+          
+          <div fxLayout="row">
+            <mat-spinner *ngIf="isDisabled" [diameter]="25"></mat-spinner>
+            <mat-icon *ngIf="!isDisabled" style="padding-top:8px; padding-right:10px;">exit_to_app</mat-icon>
+            <div *ngIf="!isDisabled" style="padding:2px; font-size:18px;">Ingresar</div>
+          </div>
+        </button>
+
+        </div>
+
+      </form>
+
+  </mat-card>
+</div>

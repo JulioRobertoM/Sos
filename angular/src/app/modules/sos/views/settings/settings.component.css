@@ -1,0 +1,41 @@
+.example-container {
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/*.example-header {
+  position: fixed;
+  top: 50;
+  left: 0;
+  right: 0;
+  background-color: rgb(180, 74, 70); 
+  color: rgb(24, 9, 68);
+}*/
+
+.mat-toolbar.mat-primary {
+  background: #808080;
+  color: #fff;
+}
+
+.example-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  background: #eae7e7;
+}
+
+mat-toolbar {
+  height: 50px;
+}
+
+mat-nav-list {
+  padding-top: 0px;
+}
+
+mat-icon {
+  padding-right: 10px;
+}

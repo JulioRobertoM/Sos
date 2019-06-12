@@ -1,0 +1,19 @@
+$color-background-gray: #EFEFEF;
+$color-medium-gray: #BEBEBE;
+$color-background-menu-left: #ffffff;
+$color-gray-dark: #363636;
+$color-orange: #F8B948;
+$color-background-red: rgba(248, 0, 9, 0.14);
+
+
+//// STATES COOLORS
+$states: (
+  increation: #F8B948,
+  pending: #EC7334,
+  approve: #519E63,
+  discard: #F24A4A,
+  spread: #028475,
+  evaluation: #0E6672,
+  mitigation: #2F4858,
+  diffused: #80A638
+);

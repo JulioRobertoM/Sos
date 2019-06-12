@@ -1,0 +1,113 @@
+.page-login-body  {
+    position: absolute;
+    z-index: 9;
+    background-color: #3f51b5;
+    height: 100%;
+    width: 100%;
+    z-index: 4;
+    background: #00c6ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4F00BC, #29ABE2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4F00BC, #29ABE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+    /*background: url('../../../../assets/imgs/backImage.jpg') no-repeat;*/
+    background-size: cover;
+    background-position: center;
+}
+.login-bg{
+    z-index: 3;
+    position: absolute;
+    max-height: 100%;
+    width: 100%;
+}
+.input-txt{
+    width: 280px;
+    padding-bottom: 20px;
+}
+.page-login-body:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 70%;
+    left: 0;
+    /* background-color: rgba(43,47,60); */
+    /*background: -webkit-linear-gradient(63deg, rgb(21,21,21) 5px, rgba(0,0,0,0) 5px), -webkit-linear-gradient(-117deg, rgb(21,21,21) 5px, rgba(0,0,0,0) 5px), -webkit-linear-gradient(63deg, rgb(34,34,34) 5px, rgba(0,0,0,0) 5px), -webkit-linear-gradient(-117deg, rgb(34,34,34) 5px, rgba(0,0,0,0) 5px), -webkit-linear-gradient(0deg, rgb(27,27,27) 10px, rgba(0,0,0,0) 10px), -webkit-linear-gradient(-90deg, rgb(29,29,29) 25%, rgb(26,26,26) 25%, rgb(26,26,26) 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 75%, rgb(36,36,36) 75%, rgb(36,36,36) 100%), rgb(19, 19, 19);
+    background: -moz-linear-gradient(27deg, rgb(21,21,21) 5px, rgba(0,0,0,0) 5px), -moz-linear-gradient(207deg, rgb(21,21,21) 5px, rgba(0,0,0,0) 5px), -moz-linear-gradient(27deg, rgb(34,34,34) 5px, rgba(0,0,0,0) 5px), -moz-linear-gradient(207deg, rgb(34,34,34) 5px, rgba(0,0,0,0) 5px), -moz-linear-gradient(90deg, rgb(27,27,27) 10px, rgba(0,0,0,0) 10px), -moz-linear-gradient(180deg, rgb(29,29,29) 25%, rgb(26,26,26) 25%, rgb(26,26,26) 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 75%, rgb(36,36,36) 75%, rgb(36,36,36) 100%), rgb(19, 19, 19);
+    background: linear-gradient(27deg, rgb(21,21,21) 5px, rgba(0,0,0,0) 5px), linear-gradient(207deg, rgb(21,21,21) 5px, rgba(0,0,0,0) 5px), linear-gradient(27deg, rgb(34,34,34) 5px, rgba(0,0,0,0) 5px), linear-gradient(207deg, rgb(34,34,34) 5px, rgba(0,0,0,0) 5px), linear-gradient(90deg, rgb(27,27,27) 10px, rgba(0,0,0,0) 10px), linear-gradient(180deg, rgb(29,29,29) 25%, rgb(26,26,26) 25%, rgb(26,26,26) 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0) 75%, rgb(36,36,36) 75%, rgb(36,36,36) 100%), rgb(19, 19, 19);
+    background-position: 0 5px, 10px 0, 0 10px, 10px 5px, 0 0, 0 0;*/
+    -webkit-background-origin: padding-box;
+    background-origin: padding-box;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-background-size: 20px 20px;
+    background-size: 20px 20px;    
+    z-index: 4;
+}
+.login-box{
+    padding:20px;
+    margin-top: 100px;
+    border-radius: 10px;
+    min-height: 350px;
+    max-width: 500px !important; /*Ancho de login*/
+    max-height: 380px !important; /*Alto de login*/
+    background-color: rgb(255, 255, 255);
+    z-index: 5;
+}
+
+.spin {
+    animation-name: spin;
+    animation-duration: 3000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; 
+    /* transform: rotate(3deg); */
+    /* transform: rotate(0.3rad);/ */
+    /* transform: rotate(3grad); */ 
+    /* transform: rotate(.03turn);  */
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+.img-log{
+    height:90px;
+}
+.img-text{
+    height: 40px;
+    padding-bottom: 20px;
+}
+
+.z-depth-5 {
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 
+                0 8px 32px 5px rgba(0, 0, 0, 0.12), 
+                0 10px 12px -5px rgba(0, 0, 0, 0.3) !important;
+}
+.signIn-btn{
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    background-color: rgba(0,0,0,0);
+    border: 2px solid rgba(43,47,60);
+    border-radius: 50px ;
+    color: rgba(43,47,60);
+    margin-top: 30px;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-right:10px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+    transition: background-color 0.25s ease-out;
+  }
+.inputmat{
+    width: 260px;
+    padding-bottom: 10px;
+}
+.signIn-btn:hover, .signIn-btn:focus{
+    background-color: rgb(73, 211, 192);
+    cursor: pointer;
+}
+  

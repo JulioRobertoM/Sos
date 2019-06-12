@@ -1,0 +1,11 @@
+.mdFormField{
+  width: 100%;
+}
+
+.mdInputContainer{
+  margin-right: 30px;
+}
+
+::ng-deep .hideUnderline .mat-input-underline {
+  width: 0px;
+}
