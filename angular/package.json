@@ -1,6 +1,6 @@
 {
   "name": "sos",
-  "description": "Sistema de pedidos en línea.",
+  "description": "Sistema de pedidos en lÃ­nea.",
   "version": "1.0.0",
   "author": {
     "name": "Julio Roberto Moscoso M.",
@@ -69,7 +69,7 @@
     "angular-in-memory-web-api": "^0.6.0",
     "angular2-moment": "^1.9.0",
     "aws-sdk": "^2.334.0",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "cities.json": "^1.1.2",
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.5.4",
