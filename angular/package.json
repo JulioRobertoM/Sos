@@ -1,6 +1,6 @@
 {
   "name": "sos",
-  "description": "Sistema de pedidos en línea.",
+  "description": "Sistema de pedidos en lÃ­nea.",
   "version": "1.0.0",
   "author": {
     "name": "Julio Roberto Moscoso M.",
@@ -90,7 +90,7 @@
     "ngx-quill": "^3.0.0",
     "node-sass": "^4.9.2",
     "perfect-scrollbar": "^1.3.0",
-    "prismjs": "^1.14.0",
+    "prismjs": "^1.27.0",
     "ramda": "^0.25.0",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.0.0",
