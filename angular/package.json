@@ -1,6 +1,6 @@
 {
   "name": "sos",
-  "description": "Sistema de pedidos en línea.",
+  "description": "Sistema de pedidos en lÃ­nea.",
   "version": "1.0.0",
   "author": {
     "name": "Julio Roberto Moscoso M.",
@@ -78,7 +78,7 @@
     "hover.css": "2.3.1",
     "lodash": "^4.17.10",
     "moment": "2.22.1",
-    "moment-timezone": "0.5.16",
+    "moment-timezone": "0.5.35",
     "ng2-charts": "^2.2.2",
     "ngrx-store-freeze": "^0.2.3",
     "ngx-bootstrap": "^4.1.1",
