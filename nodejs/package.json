@@ -26,7 +26,7 @@
     "express-jwt": "^5.3.1",
     "http-errors": "~1.6.2",
     "inversify": "^4.11.1",
-    "jsonwebtoken": "^8.2.1",
+    "jsonwebtoken": "^9.0.0",
     "jsreport-core": "^2.2.0",
     "jsreport-handlebars": "^2.0.0",
     "jsreport-xlsx": "^2.0.2",
